@@ -1,8 +1,11 @@
-## Welcome to GitHub Pages
+# Bellingham Folk Tune Project 
 
-You can use the [editor on GitHub](https://github.com/katiebunge/tunes/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Welcome! This is my code learning project to develop skills in Leaflet, Shiny, and other web-based data visualization and mapping tools. My dataset of choice is a repertoire of traditional folk tunes learned and played in the Bellingham, WA area. 
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+To learn more about the folk music community in Bellingham, please visit [The Bellingham Folk Festival Website](http://www.thebellinghamfolkfestival.com).
+
+
+# Notes for My Reference: 
 
 ### Markdown
 
