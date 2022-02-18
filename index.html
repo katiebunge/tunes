@@ -68,8 +68,8 @@
 }
 		
 		#map{
-			height: 300px;
-			width: 450px;
+			height: 600px;
+			width: 800px;
 		}
 	
 	</style>
@@ -179,7 +179,7 @@
 }
 			var layerGroup = L.geoJSON(tunePoints, {
   onEachFeature: function (feature, layer) {
-    layer.bindPopup('<h1>'+feature.properties.Name+'</h1><p>Tune Type: '+feature.properties.TuneType+'</p></br><p>Time Signature: '+feature.properties.Signature+'</p></br><p>Key: '+feature.properties.Key+'</p>');
+    layer.bindPopup('<h1>'+feature.properties.Name+'</h1><p>Tune Type: '+feature.properties.TuneType+'</p><p>Time Signature: '+feature.properties.Signature+'</p><p>Composery: '+feature.properties.Composer+'</p><p>Key: '+feature.properties.Key+'</p>');
   }
 }).addTo(map)
 			
