@@ -19,6 +19,9 @@
 			background-color:#fafaed;
 			font-family: "Cormorant", Serif;
 		}
+		p{ 
+			font-size:12px;
+		}
 	/* Header/Blog Title */
 .header {
   padding: 20px;
@@ -89,7 +92,7 @@
 			     <div class="card">
 				        <h2>Welcome</h2>
       <h5>Latest Update: February 17, 2022</h5>
-      <h2>Welcome to the Bellingham Folk Tune Project! This is a test site to help me develop skills in Leaflet mapping and data visualization. I am mapping the tunes I know based on where the tunes may have come from. Map points are estimates and may not reflect the exact source of a tune.</h2>
+      <p>Welcome to the Bellingham Folk Tune Project! This is a test site to help me develop skills in Leaflet mapping and data visualization. I am mapping the tunes I know based on where the tunes may have come from. Map points are estimates and may not reflect the exact source of a tune.</p>
 
 		</div>
 				<div class="card">
@@ -105,8 +108,75 @@
 	maxZoom: 22
 });
 			Thunderforest_Neighbourhood.addTo(map);
-			var tunepoints = new L.LayerGroup();
-        L.geoJson(map, {style: tunestyle}).addTo(tunepoints);
+			//GeoJson Tune Points 
+			var geojsonFeature = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Farewell to Miltown",
+        "Tune Type": "Reel",
+        "Signature": "4/4",
+        "Composer": "Junior Crehan",
+        "Key": "G minor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.401421546936035,
+          52.85464623859986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "Bantry Bay",
+        "Tune Type": "Hornpipe",
+        "Signature": "4/4",
+        "Composer": "Unknown",
+        "Key": "G major"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.557762145996092,
+          51.68139018761292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "marker-color": "#7e7e7e",
+        "marker-size": "medium",
+        "marker-symbol": "",
+        "Name": "The Glen Cottage Polka (1)",
+        "Tune Type": "Polka",
+        "Signature": "2/2",
+        "Composer": "Unknown",
+        "Key": "E dorian"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.221649169921875,
+          52.164245414507754
+        ]
+      }
+    }
+  ]
+}
+			L.geoJSON(geojsonFeature).addTo(map);
+			
+			
 			
 		</script>
 				</div>
