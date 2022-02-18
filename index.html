@@ -110,19 +110,9 @@
 			Thunderforest_Neighbourhood.addTo(map);
 			//GeoJson Tune Points 
 			
-			
-			function forEachFeature(feature, layer) {
-        var popupContent = "<p> <b>" + feature.properties.Name + 
-            "</b></br>"+ feature.properties.TuneType +
-            "</br>"+ feature.properties.Signature +
-            ",</br> "+ feature.properties.Composer +
-            ", "+ feature.properties.Key + "</p>";
-
-        layer.bindPopup(popupContent);
-    }
-			
+				
 			//GeoJson Feature
-			var geojsonFeature = {
+			var tunePoints = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -187,6 +177,13 @@
     }
   ]
 }
+			var layerGroup = L.geoJSON(tunePoints, {
+  onEachFeature: function (feature, layer) {
+    layer.bindPopup('<h1>'+feature.properties.Name+'</h1><p>Tune Type: '+feature.properties.TuneType+'</p></br><p>Time Signature: '+feature.properties.Signature+'</p></br><p>Key: '+feature.properties.Key+'</p>');
+  }
+}).addTo(map)
+			
+			
 			L.geoJSON(geojsonFeature).addTo(map);
 			
 			
