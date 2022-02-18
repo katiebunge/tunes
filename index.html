@@ -21,15 +21,57 @@
 			background-color:#faf6eb;
 			font-family: "Cormorant", Serif;
 		}
+	/* Header/Blog Title */
+.header {
+  padding: 30px;
+  font-size: 40px;
+  text-align: center;
+  background: white;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Main column */
+.maincolumn {
+  margin: auto;
+  width: 75%;
+}
+
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
+		
 		#map{
 			height: 300px;
 			width: 450px;
 		}
-		div.frame{
-			width: 80%;
-			margin: auto;
-			border: 3px solid green;
-		}
+	
 	</style>
 	 <!-- Make sure you put this AFTER Leaflet's CSS -->
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -39,15 +81,20 @@
 <body>
 	<div class="container">
 <!-- THIS ACTUAL CONTENT BEGINS HERE...this is called a comment. which can only be seen when viewing the source code. This text CANNOT be seen by the browser. Its helpful when you need to place notes, comments or reminders in your code -->
-	<header><div.frame>
-		<div>
+		<div class="header">
 			<h1>Bellingham Folk Tunes Project</h1>
 		</div>
-	</header>
-	<!-- END HEADER | the header element in new to HTML5 -->
-		<div>
+	
+		<div class="row">
+			<div class="maincolumn">
+			     <div class="card">
+				        <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
 			<h2>This is a test site to help me develop skills in Leaflet</h2>
 		</div>
+				<div class="card">
 		 <div id="map"></div>
 		<script>
 			var map = L.map('map').setView([52.856114, -9.400747], 13);
@@ -59,7 +106,7 @@
 });
 	
 		</script>
-		
+				</div>
 		<div>
 
 	<footer>
@@ -69,3 +116,6 @@
 		</div></div>
 </body>
 </html>
+
+
+
