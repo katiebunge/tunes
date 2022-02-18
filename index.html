@@ -108,43 +108,19 @@
 });
 			Thunderforest_Neighbourhood.addTo(map);
 			//GeoJson Tune Points 
-			const onEachFeature = (feature, layer) => {
-  // eslint-disable-line no-use-before-define
-  const popupContent = `
-  <table>
-  <tr>
-    <th>Name:</th>
-    <td>${feature.properties["Name"]}</td>
-  </tr>
-  <tr>
-    <th>Tune Type:</th>
-    <td>${feature.properties["Tune Type"]}</td>
-  </tr>
-  <tr>
-    <th>Time Signature:</th>
-    <td>${feature.properties["Signature"]}</td>
-  </tr>
-  <tr>
-    <th>Composer:</th>
-    <td>${feature.properties["Composer"]}</td>
-  </tr>
-  <tr>
-    <th>Key:</th>
-    <td>${feature.properties["Key"]}</td>
-  </tr>
-</table>`;
+			
+			
+			function forEachFeature(feature, layer) {
+        var popupContent = "<p> <b>" + feature.properties.Name + 
+            "</b></br>"+ feature.properties.TuneType +
+            "</br>"+ feature.properties.Signature +
+            ",</br> "+ feature.properties.Composer +
+            ", "+ feature.properties.Key + "</p>";
 
-  if (feature.properties && feature.properties.popupContent) {
-    popupContent += feature.properties.popupContent;
-  }
-
-  layer.bindPopup(popupContent);
-}
-
-const feature = L.geoJSON(json, {
-  onEachFeature: onEachFeature
-}).addTo(map);
-map.fitBounds(feature.getBounds());
+        layer.bindPopup(popupContent);
+    }
+			
+			//GeoJson Feature
 			var geojsonFeature = {
   "type": "FeatureCollection",
   "features": [
@@ -155,7 +131,7 @@ map.fitBounds(feature.getBounds());
         "marker-size": "medium",
         "marker-symbol": "",
         "Name": "Farewell to Miltown",
-        "Tune Type": "Reel",
+        "TuneType": "Reel",
         "Signature": "4/4",
         "Composer": "Junior Crehan",
         "Key": "G minor"
@@ -175,7 +151,7 @@ map.fitBounds(feature.getBounds());
         "marker-size": "medium",
         "marker-symbol": "",
         "Name": "Bantry Bay",
-        "Tune Type": "Hornpipe",
+        "TuneType": "Hornpipe",
         "Signature": "4/4",
         "Composer": "Unknown",
         "Key": "G major"
@@ -195,7 +171,7 @@ map.fitBounds(feature.getBounds());
         "marker-size": "medium",
         "marker-symbol": "",
         "Name": "The Glen Cottage Polka (1)",
-        "Tune Type": "Polka",
+        "TuneType": "Polka",
         "Signature": "2/2",
         "Composer": "Unknown",
         "Key": "E dorian"
