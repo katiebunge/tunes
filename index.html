@@ -7,7 +7,6 @@
 	<title>Bellingham Folk Tune Project</title>
       <meta http-equiv="author" content="Katie Bunge">
       <meta name="keywords" content="html, css, web, design, sample, practice">
-      <!-- These are META TAGS, they're used to describe the website, this information is read mainly by search engines like GOOGLE, YAHOO, ETC... -->	
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant&display=swap" rel="stylesheet">
@@ -20,7 +19,7 @@
 			font-family: "Cormorant", Serif;
 		}
 		p{ 
-			font-size:12px;
+			font-size:16px;
 		}
 	/* Header/Blog Title */
 .header {
@@ -109,6 +108,43 @@
 });
 			Thunderforest_Neighbourhood.addTo(map);
 			//GeoJson Tune Points 
+			const onEachFeature = (feature, layer) => {
+  // eslint-disable-line no-use-before-define
+  const popupContent = `
+  <table>
+  <tr>
+    <th>Name:</th>
+    <td>${feature.properties["Name"]}</td>
+  </tr>
+  <tr>
+    <th>Tune Type:</th>
+    <td>${feature.properties["Tune Type"]}</td>
+  </tr>
+  <tr>
+    <th>Time Signature:</th>
+    <td>${feature.properties["Signature"]}</td>
+  </tr>
+  <tr>
+    <th>Composer:</th>
+    <td>${feature.properties["Composer"]}</td>
+  </tr>
+  <tr>
+    <th>Key:</th>
+    <td>${feature.properties["Key"]}</td>
+  </tr>
+</table>`;
+
+  if (feature.properties && feature.properties.popupContent) {
+    popupContent += feature.properties.popupContent;
+  }
+
+  layer.bindPopup(popupContent);
+}
+
+const feature = L.geoJSON(json, {
+  onEachFeature: onEachFeature
+}).addTo(map);
+map.fitBounds(feature.getBounds());
 			var geojsonFeature = {
   "type": "FeatureCollection",
   "features": [
